@@ -8,8 +8,14 @@ import { Loader2, Wand2 } from "lucide-react";
 import { toast } from "@/components/ui/use-toast";
 
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
-console.log('Initial API_URL:', API_URL);
-console.log('Environment variables:', import.meta.env);
+console.log('Environment check:', {
+  VITE_API_URL: import.meta.env.VITE_API_URL,
+  MODE: import.meta.env.MODE,
+  PROD: import.meta.env.PROD,
+  DEV: import.meta.env.DEV,
+  BASE_URL: import.meta.env.BASE_URL,
+  API_URL: API_URL
+});
 
 const GptStoryPage = () => {
   const [prompt, setPrompt] = useState("");
@@ -41,7 +47,14 @@ const GptStoryPage = () => {
   ];
 
   useEffect(() => {
-    console.log('Component mounted, API_URL:', API_URL);
+    console.log('Component mounted - Environment check:', {
+      VITE_API_URL: import.meta.env.VITE_API_URL,
+      MODE: import.meta.env.MODE,
+      PROD: import.meta.env.PROD,
+      DEV: import.meta.env.DEV,
+      BASE_URL: import.meta.env.BASE_URL,
+      API_URL: API_URL
+    });
   }, []);
 
   const handleGenerate = async () => {
