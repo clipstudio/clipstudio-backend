@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -8,6 +8,8 @@ import { Loader2, Wand2 } from "lucide-react";
 import { toast } from "@/components/ui/use-toast";
 
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+console.log('Initial API_URL:', API_URL);
+console.log('Environment variables:', import.meta.env);
 
 const GptStoryPage = () => {
   const [prompt, setPrompt] = useState("");
@@ -38,10 +40,15 @@ const GptStoryPage = () => {
     "Professional"
   ];
 
+  useEffect(() => {
+    console.log('Component mounted, API_URL:', API_URL);
+  }, []);
+
   const handleGenerate = async () => {
-    console.log('Generate button clicked');
+    console.log('Generate button clicked - start of function');
     console.log('Current state:', { prompt, genre, tone });
-    console.log('API URL:', API_URL);
+    console.log('API URL at time of click:', API_URL);
+    console.log('Environment variables at time of click:', import.meta.env);
 
     if (!prompt || !genre || !tone) {
       console.log('Validation failed:', { prompt, genre, tone });
@@ -113,19 +120,26 @@ const GptStoryPage = () => {
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="space-y-2">
-                <label className="text-sm font-medium">Story Prompt</label>
+                <label htmlFor="story-prompt" className="text-sm font-medium">Story Prompt</label>
                 <Textarea
+                  id="story-prompt"
+                  name="story-prompt"
                   placeholder="Describe your story idea..."
                   value={prompt}
                   onChange={(e) => setPrompt(e.target.value)}
                   className="min-h-[100px]"
+                  aria-label="Story prompt input"
                 />
               </div>
 
               <div className="space-y-2">
-                <label className="text-sm font-medium">Genre</label>
-                <Select value={genre} onValueChange={setGenre}>
-                  <SelectTrigger>
+                <label htmlFor="story-genre" className="text-sm font-medium">Genre</label>
+                <Select 
+                  value={genre} 
+                  onValueChange={setGenre}
+                  name="story-genre"
+                >
+                  <SelectTrigger id="story-genre" aria-label="Select story genre">
                     <SelectValue placeholder="Select genre" />
                   </SelectTrigger>
                   <SelectContent>
@@ -139,9 +153,13 @@ const GptStoryPage = () => {
               </div>
 
               <div className="space-y-2">
-                <label className="text-sm font-medium">Tone</label>
-                <Select value={tone} onValueChange={setTone}>
-                  <SelectTrigger>
+                <label htmlFor="story-tone" className="text-sm font-medium">Tone</label>
+                <Select 
+                  value={tone} 
+                  onValueChange={setTone}
+                  name="story-tone"
+                >
+                  <SelectTrigger id="story-tone" aria-label="Select story tone">
                     <SelectValue placeholder="Select tone" />
                   </SelectTrigger>
                   <SelectContent>
@@ -155,19 +173,21 @@ const GptStoryPage = () => {
               </div>
 
               <Button
+                type="submit"
                 className="w-full"
                 onClick={handleGenerate}
                 disabled={generating}
+                aria-label="Generate story"
               >
                 {generating ? (
                   <>
-                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                    Generating...
+                    <Loader2 className="mr-2 h-4 w-4 animate-spin" aria-hidden="true" />
+                    <span>Generating...</span>
                   </>
                 ) : (
                   <>
-                    <Wand2 className="mr-2 h-4 w-4" />
-                    Generate Story
+                    <Wand2 className="mr-2 h-4 w-4" aria-hidden="true" />
+                    <span>Generate Story</span>
                   </>
                 )}
               </Button>
@@ -180,11 +200,11 @@ const GptStoryPage = () => {
             </CardHeader>
             <CardContent>
               {generatedStory ? (
-                <div className="prose prose-sm">
+                <div className="prose prose-sm" role="region" aria-label="Generated story content">
                   <p className="whitespace-pre-wrap">{generatedStory}</p>
                 </div>
               ) : (
-                <div className="text-center text-muted-foreground py-8">
+                <div className="text-center text-muted-foreground py-8" role="status" aria-label="No story generated yet">
                   Your generated story will appear here
                 </div>
               )}
