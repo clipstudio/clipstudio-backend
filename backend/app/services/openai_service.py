@@ -5,6 +5,21 @@ from typing import Dict, Any
 client = AsyncOpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 async def generate_story(prompt: str, style: str = "casual", length: str = "medium") -> Dict[str, Any]:
+    # Map frontend genre values to backend style values
+    style_mapping = {
+        "drama": "professional",
+        "comedy": "humorous",
+        "romance": "creative",
+        "mystery": "professional",
+        "horror": "creative",
+        "adventure": "creative",
+        "sci-fi": "creative",
+        "fantasy": "creative"
+    }
+    
+    # Use mapped style or default to casual
+    backend_style = style_mapping.get(style.lower(), "casual")
+    
     # Define length tokens
     length_tokens = {
         "short": "about 200 words",
@@ -21,7 +36,7 @@ async def generate_story(prompt: str, style: str = "casual", length: str = "medi
     }
     
     system_prompt = f"""You are a professional story writer. 
-    {style_prompts.get(style, style_prompts["casual"])}
+    {style_prompts.get(backend_style, style_prompts["casual"])}
     The story should be {length_tokens[length]}.
     Include relevant tags at the end.
     Format the response as JSON with 'title', 'content', and 'tags' fields.
@@ -38,7 +53,8 @@ async def generate_story(prompt: str, style: str = "casual", length: str = "medi
         )
         
         # Parse the JSON response
-        story_data = response.choices[0].message.content
+        import json
+        story_data = json.loads(response.choices[0].message.content)
         return story_data
         
     except Exception as e:
