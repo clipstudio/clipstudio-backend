@@ -7,7 +7,12 @@ app = FastAPI(title="AI Content Generator API")
 # Configure CORS
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Allow all origins for now
+    allow_origins=[
+        "https://darkorange-seahorse-703302.hostingersite.com",  # Production frontend
+        "http://darkorange-seahorse-703302.hostingersite.com",   # Production frontend (http)
+        "http://localhost:5173",  # Local development
+        "http://localhost:5174",  # Local development (alternative port)
+    ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
