@@ -8,7 +8,7 @@ export const API_CONFIG = {
   
   // Production - your deployed backend on Render
   production: {
-    baseURL: 'https://your-backend-app.onrender.com', // Update this with your actual Render backend URL
+    baseURL: 'https://clipstudio-backend-1.onrender.com', // Your actual Render backend URL
     timeout: 30000,
   },
   

@@ -10,11 +10,14 @@ app.add_middleware(
     allow_origins=[
         "https://seashell-seahorse-396931.hostingersite.com",  # Production frontend
         "http://seashell-seahorse-396931.hostingersite.com",   # Production frontend (http)
+        "https://clipstudio-backend-1.onrender.com",           # Backend domain
+        "http://clipstudio-backend-1.onrender.com",            # Backend domain (http)
         "https://darkorange-seahorse-703302.hostingersite.com",  # Alternative production frontend
         "http://darkorange-seahorse-703302.hostingersite.com",   # Alternative production frontend (http)
         "http://localhost:5173",  # Local development
         "http://localhost:5174",  # Local development (alternative port)
         "http://localhost:3000",  # Alternative local development
+        "*",  # Allow all origins for development (remove in production)
     ],
     allow_credentials=True,
     allow_methods=["*"],
