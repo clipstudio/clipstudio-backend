@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from app.routes import story, image
+from app.routes import story, image, tts, video
 
 app = FastAPI(title="AI Content Generator API")
 
@@ -8,10 +8,13 @@ app = FastAPI(title="AI Content Generator API")
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
-        "https://darkorange-seahorse-703302.hostingersite.com",  # Production frontend
-        "http://darkorange-seahorse-703302.hostingersite.com",   # Production frontend (http)
+        "https://seashell-seahorse-396931.hostingersite.com",  # Production frontend
+        "http://seashell-seahorse-396931.hostingersite.com",   # Production frontend (http)
+        "https://darkorange-seahorse-703302.hostingersite.com",  # Alternative production frontend
+        "http://darkorange-seahorse-703302.hostingersite.com",   # Alternative production frontend (http)
         "http://localhost:5173",  # Local development
         "http://localhost:5174",  # Local development (alternative port)
+        "http://localhost:3000",  # Alternative local development
     ],
     allow_credentials=True,
     allow_methods=["*"],
@@ -21,6 +24,8 @@ app.add_middleware(
 # Include routers
 app.include_router(story.router, prefix="/api/story", tags=["story"])
 app.include_router(image.router, prefix="/api/image", tags=["image"])
+app.include_router(tts.router, prefix="/api/tts", tags=["tts"])
+app.include_router(video.router, prefix="/api/video", tags=["video"])
 
 @app.get("/")
 async def root():
