@@ -54,8 +54,7 @@ async def generate_story(prompt: str, style: str = "casual", length: str = "medi
     {style_prompts.get(backend_style, style_prompts["casual"])}
     The story should be {length_tokens[length]}.
     Include relevant tags at the end.
-    Format the response as JSON with 'title', 'content', and 'tags' fields.
-    The tags should be relevant to the story's theme and genre."""
+    Format the response as a single line of valid JSON with these fields: 'title', 'content', and 'tags' (an array of strings). Do not include any extra text, explanations, or formatting. Only output the JSON object."""
     
     try:
         response = await client.chat.completions.create(
