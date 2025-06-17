@@ -63,8 +63,7 @@ async def generate_story(prompt: str, style: str = "casual", length: str = "medi
             messages=[
                 {"role": "system", "content": system_prompt},
                 {"role": "user", "content": prompt}
-            ],
-            response_format={ "type": "json_object" }
+            ]
         )
         
         # Parse the JSON response
