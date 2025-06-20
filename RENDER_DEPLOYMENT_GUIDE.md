@@ -41,7 +41,7 @@ your-repo/
 ### 3.3 Set Environment Variables
 Click on "Environment" tab and add:
 ```
-OPENAI_API_KEY=REMOVED<==x6SLwdce99IROVjvDV3sruGNph3AcroJ_oRq8saXiOVxd6qkbCHnRQwMUZREmCdtW5RJNPakflT3BlbkFJo4R0CzINYBfOHW40aJJFUggpieYBGBqLGrXeJ9ZD9PpSDOO51WfKWOO42u2bqwVe2e01fnHjIA
+OPENAI_API_KEY=your-openai-api-key-here
 ```
 
 ### 3.4 Deploy

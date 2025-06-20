@@ -37,7 +37,7 @@ git push -u origin main
    - **Start Command**: `cd backend && uvicorn main:app --host 0.0.0.0 --port $PORT`
 6. Add Environment Variable:
    - **Key**: `OPENAI_API_KEY`
-   - **Value**: `REMOVED<==x6SLwdce99IROVjvDV3sruGNph3AcroJ_oRq8saXiOVxd6qkbCHnRQwMUZREmCdtW5RJNPakflT3BlbkFJo4R0CzINYBfOHW40aJJFUggpieYBGBqLGrXeJ9ZD9PpSDOO51WfKWOO42u2bqwVe2e01fnHjIA`
+   - **Value**: `your-openai-api-key-here`
 7. Click "Create Web Service"
 8. Wait for deployment (2-5 minutes)
 9. Note your backend URL (e.g., `https://clipstudio-backend.onrender.com`)
