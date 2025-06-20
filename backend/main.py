@@ -34,6 +34,14 @@ app.include_router(video.router, prefix="/api/video", tags=["video"])
 async def root():
     return {"message": "AI Content Generator API is running"}
 
+@app.get("/health")
+async def health_check():
+    return {"status": "healthy", "message": "API is running"}
+
+@app.get("/ping")
+async def ping():
+    return {"pong": "API is alive"}
+
 if __name__ == "__main__":
     import uvicorn
     import os
