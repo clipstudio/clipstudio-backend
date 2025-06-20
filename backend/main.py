@@ -8,12 +8,12 @@ app = FastAPI(title="AI Content Generator API")
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
-        "https://seashell-seahorse-396931.hostingersite.com",  # Production frontend
-        "http://seashell-seahorse-396931.hostingersite.com",   # Production frontend (http)
-        "https://clipstudio-backend-1.onrender.com",           # Backend domain
-        "http://clipstudio-backend-1.onrender.com",            # Backend domain (http)
-        "https://darkorange-seahorse-703302.hostingersite.com",  # Alternative production frontend
-        "http://darkorange-seahorse-703302.hostingersite.com",   # Alternative production frontend (http)
+        "https://darkorange-seahorse-703302.hostingersite.com",  # Production frontend
+        "http://darkorange-seahorse-703302.hostingersite.com",   # Production frontend (http)
+        "https://seashell-seahorse-396931.hostingersite.com",    # Alternative production frontend
+        "http://seashell-seahorse-396931.hostingersite.com",     # Alternative production frontend (http)
+        "https://clipstudio-backend-1.onrender.com",             # Backend domain
+        "http://clipstudio-backend-1.onrender.com",              # Backend domain (http)
         "http://localhost:5173",  # Local development
         "http://localhost:5174",  # Local development (alternative port)
         "http://localhost:3000",  # Alternative local development

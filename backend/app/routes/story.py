@@ -7,8 +7,8 @@ router = APIRouter()
 
 class StoryRequest(BaseModel):
     prompt: str
-    style: Optional[str] = "reddit"  # or "creative"
-    length: Optional[str] = "medium"  # short, medium, long
+    genre: Optional[str] = "Drama"  # Match frontend genres
+    tone: Optional[str] = "Serious"  # Match frontend tones
 
 class StoryResponse(BaseModel):
     title: str
@@ -20,8 +20,8 @@ async def create_story(request: StoryRequest):
     try:
         story = await generate_story(
             prompt=request.prompt,
-            style=request.style,
-            length=request.length
+            genre=request.genre,
+            tone=request.tone
         )
         return story
     except Exception as e:

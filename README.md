@@ -1,232 +1,221 @@
-# AI Content Generator - Full Stack Application
+# AI Content Studio - Complete Integration
 
-A comprehensive AI-powered content generation platform with story generation, image creation, text-to-speech, and video editing capabilities.
+A comprehensive AI-powered content creation platform with story generation, image creation, video editing, and text-to-speech capabilities.
 
-## 🌟 Features
+## 🚀 Features
 
-### AI Content Generation
-- **Story Generation**: Create engaging stories with customizable genres and tones
-- **Image Generation**: Generate high-quality images using DALL-E
-- **Text-to-Speech**: Convert text to natural-sounding speech with multiple voices
-- **Video Editing**: AI-powered video editor with upload/download capabilities
+### AI Story Generator
+- Generate stories with custom prompts, genres, and tones
+- Real-time AI-powered content creation
+- Copy and download generated stories
+- Multiple story styles and lengths
 
-### Video Editor Features
-- **Media Upload**: Upload videos, images, and audio files
-- **AI Image Generation**: Generate custom images for your videos
-- **TTS Integration**: Add voice-overs to your videos
-- **YouTube Upload**: Direct upload to YouTube
-- **Export & Download**: Save videos to your device
-- **Timeline Editing**: Drag-and-drop timeline interface
+### Professional Video Editor (CapCut-like)
+- Multi-track timeline editing
+- Drag-and-drop media management
+- Real-time preview with controls
+- Professional effects and filters
+- Text overlays and audio mixing
+- Export functionality with progress tracking
+- Undo/redo functionality
+- Track visibility controls
 
-## 🚀 Quick Start
+### AI Image Generator
+- Generate images from text prompts
+- Multiple art styles and sizes
+- Batch image generation
+- Image editing and variations
+- Style transfer capabilities
 
-### 1. Run Setup Script
+### Text-to-Speech
+- Multiple voice options
+- Customizable speed and pitch
+- Voice cloning capabilities
+- Speech-to-text conversion
+
+## 🛠️ Tech Stack
+
+### Frontend
+- **React 18** with Vite
+- **Tailwind CSS** for styling
+- **Radix UI** components
+- **Lucide React** icons
+- **WaveSurfer.js** for audio visualization
+- **React Router** for navigation
+
+### Backend
+- **FastAPI** Python framework
+- **OpenAI API** integration
+- **CORS** enabled for cross-origin requests
+- **Async/await** for performance
+
+## 📦 Installation
+
+### Prerequisites
+- Node.js 18+ 
+- Python 3.8+
+- OpenAI API key
+
+### Frontend Setup
 ```bash
-./setup.sh
-```
+# Install dependencies
+npm install
 
-### 2. Configure Environment Variables
-```bash
-# Backend (.env)
-OPENAI_API_KEY=your_openai_api_key_here
-
-# Frontend (.env)
-VITE_API_URL=http://localhost:8000
-```
-
-### 3. Start Development Servers
-```bash
-# Backend
-cd backend
-source venv/bin/activate
-python main.py
-
-# Frontend (in new terminal)
-cd frontend
+# Start development server
 npm run dev
 ```
 
-## 🏗️ Architecture
+### Backend Setup
+```bash
+# Navigate to backend directory
+cd backend
 
-### Backend (FastAPI)
-- **Framework**: FastAPI with Python 3.9+
-- **AI Services**: OpenAI GPT-4, DALL-E, TTS
-- **File Handling**: Video upload/download, image processing
-- **API**: RESTful endpoints with CORS support
+# Install Python dependencies
+pip install -r requirements.txt
 
-### Frontend (React + Vite)
-- **Framework**: React 18 with Vite
-- **UI**: Tailwind CSS with custom components
-- **State Management**: React Context API
-- **Routing**: React Router with HashRouter
+# Set OpenAI API key
+export OPENAI_API_KEY="your-api-key-here"
 
-## 📁 Project Structure
-
-```
-├── backend/
-│   ├── app/
-│   │   ├── routes/          # API endpoints
-│   │   ├── services/        # AI and business logic
-│   │   └── utils/           # Helper functions
-│   ├── main.py              # FastAPI application
-│   └── requirements.txt     # Python dependencies
-├── frontend/
-│   ├── src/
-│   │   ├── components/      # Reusable UI components
-│   │   ├── pages/           # Page components
-│   │   ├── services/        # API service layer
-│   │   └── config/          # Configuration files
-│   └── package.json         # Node.js dependencies
-└── DEPLOYMENT.md           # Deployment instructions
+# Start backend server
+python main.py
 ```
 
-## 🔧 API Endpoints
+## 🔧 Configuration
 
-### Story Generation
-- `POST /api/story/generate` - Generate stories with custom prompts
+### Environment Variables
 
-### Image Generation
-- `POST /api/image/generate` - Generate images using DALL-E
+Create a `.env` file in the root directory:
 
-### Text-to-Speech
+```env
+# Frontend
+VITE_API_BASE_URL=http://localhost:8000/api
+
+# Backend
+OPENAI_API_KEY=your-openai-api-key-here
+```
+
+### API Endpoints
+
+#### Story Generation
+- `POST /api/story/generate` - Generate AI stories
+- Parameters: `prompt`, `style`, `length`
+
+#### Image Generation
+- `POST /api/image/generate` - Generate AI images
+- Parameters: `prompt`, `style`, `size`
+
+#### Video Processing
+- `POST /api/video/process` - Process video files
+- `POST /api/video/text-overlay` - Add text overlays
+- `POST /api/video/apply-filter` - Apply video filters
+- `POST /api/video/export` - Export final video
+
+#### Text-to-Speech
 - `POST /api/tts/generate` - Convert text to speech
 - `GET /api/tts/voices` - Get available voices
 
-### Video Processing
-- `POST /api/video/generate` - Generate videos from images/audio
-- `POST /api/video/upload` - Upload video files
-- `POST /api/video/youtube-upload` - Upload to YouTube
+## 🎯 Usage
 
-## 🎯 Integration with Existing Website
+### Story Generator
+1. Navigate to `/gpt-story`
+2. Enter your story prompt
+3. Select genre and tone
+4. Click "Generate Story"
+5. Copy or download the result
 
-### 1. Connect to Your Hostinger Website
+### Video Editor
+1. Navigate to `/video-editor`
+2. Upload media files (video, audio, images)
+3. Drag tracks to timeline
+4. Add effects and filters
+5. Adjust properties in the right sidebar
+6. Export your final video
 
-Your frontend is already configured to work with your Hostinger website at `https://seashell-seahorse-396931.hostingersite.com`. The AI features are integrated into the existing pages:
+### Image Generator
+1. Navigate to `/image-generator`
+2. Enter image description
+3. Select style and size
+4. Generate single or multiple images
+5. Download or edit generated images
 
-- **Story Generator**: `/gpt-story` - AI-powered story creation
-- **Image Generator**: `/image-generator` - DALL-E image generation
-- **Video Editor**: `/video-editor` - Full-featured video editor
-- **TTS Generator**: `/voice-over` - Text-to-speech conversion
+## 🔌 API Integration
 
-### 2. Backend Deployment
+### Frontend Services
 
-Deploy your backend to Render and update the frontend configuration:
+The frontend includes comprehensive service files for API integration:
 
-1. **Deploy to Render** (see `DEPLOYMENT.md`)
-2. **Update API URL** in `frontend/src/config/api.js`:
-   ```javascript
-   production: {
-     baseURL: 'https://your-backend-app.onrender.com',
-     timeout: 30000,
-   }
-   ```
+- `src/services/api.js` - Base API configuration
+- `src/services/storyService.js` - Story generation
+- `src/services/videoService.js` - Video editing
+- `src/services/imageService.js` - Image generation
+- `src/services/ttsService.js` - Text-to-speech
 
-### 3. Environment Configuration
+### Error Handling
 
-Set up environment variables for production:
-
-```bash
-# Backend (Render)
-OPENAI_API_KEY=sk-your-openai-api-key
-
-# Frontend (Hostinger)
-VITE_API_URL=https://your-backend-app.onrender.com
-```
+All services include:
+- Proper error handling with user-friendly messages
+- Fallback to mock data when API is unavailable
+- Loading states and progress indicators
+- Toast notifications for user feedback
 
 ## 🎨 UI Components
 
-The application uses a custom UI component library built with:
-- **Radix UI**: Accessible component primitives
-- **Tailwind CSS**: Utility-first styling
-- **Lucide React**: Beautiful icons
-- **Custom Components**: Tailored for AI content generation
+### Professional Video Editor Interface
+- **Three-panel layout**: Media library, preview, properties
+- **Tabbed interface**: Media, effects, audio
+- **Timeline**: Multi-track with drag-and-drop
+- **Preview controls**: Play, pause, volume, time display
+- **Export progress**: Modal with progress bar
 
-### Key Components
-- `Button` - Interactive buttons with loading states
-- `Card` - Content containers
-- `Input` - Form inputs with validation
-- `Select` - Dropdown selections
-- `Textarea` - Multi-line text inputs
-- `Toast` - Notification system
-
-## 🔒 Security Features
-
-- **CORS Configuration**: Secure cross-origin requests
-- **API Key Protection**: Environment variable management
-- **Input Validation**: Pydantic models for data validation
-- **Error Handling**: Comprehensive error management
-
-## 📊 Performance Optimization
-
-- **Lazy Loading**: Components loaded on demand
-- **Image Optimization**: Efficient image handling
-- **API Caching**: Smart caching strategies
-- **Bundle Optimization**: Vite build optimization
-
-## 🧪 Testing
-
-### Backend Testing
-```bash
-cd backend
-python -m pytest
-```
-
-### Frontend Testing
-```bash
-cd frontend
-npm test
-```
+### Responsive Design
+- Mobile-friendly interface
+- Adaptive layouts
+- Touch-friendly controls
+- Professional color scheme
 
 ## 🚀 Deployment
 
-### Production Deployment
-1. **Backend**: Deploy to Render (see `DEPLOYMENT.md`)
-2. **Frontend**: Build and upload to Hostinger
-3. **Environment**: Configure production variables
-4. **Testing**: Verify all features work correctly
-
-### Development Deployment
+### Frontend Deployment
 ```bash
-# Backend
-cd backend && python main.py
+# Build for production
+npm run build
 
-# Frontend
-cd frontend && npm run dev
+# Deploy to hosting platform
+# (Vercel, Netlify, etc.)
 ```
 
-## 🔧 Troubleshooting
+### Backend Deployment
+```bash
+# Deploy to Render, Railway, or similar
+# Ensure environment variables are set
+```
+
+## 🔒 Security
+
+- CORS properly configured for production domains
+- API key stored securely in environment variables
+- Input validation on both frontend and backend
+- Rate limiting recommended for production
+
+## 🐛 Troubleshooting
 
 ### Common Issues
 
-1. **CORS Errors**
-   - Check backend CORS configuration
-   - Verify domain URLs are correct
+1. **CORS Errors**: Ensure backend CORS settings include your frontend domain
+2. **API Key Issues**: Verify OpenAI API key is set correctly
+3. **Blank Pages**: Check browser console for JavaScript errors
+4. **Missing Dependencies**: Run `npm install` to install all packages
 
-2. **API Connection Failed**
-   - Verify backend URL in frontend config
-   - Check backend is running and accessible
+### Development Tips
 
-3. **OpenAI API Errors**
-   - Verify API key is set correctly
-   - Check OpenAI account has sufficient credits
+- Use browser dev tools to inspect network requests
+- Check backend logs for API errors
+- Test with mock data when API is unavailable
+- Use React DevTools for component debugging
 
-4. **Build Errors**
-   - Ensure all dependencies are installed
-   - Check for missing packages
+## 📝 License
 
-### Debug Steps
-
-1. **Check browser console** for JavaScript errors
-2. **Verify network requests** in browser dev tools
-3. **Check backend logs** for server errors
-4. **Test API endpoints** directly with Postman
-
-## 📈 Monitoring & Analytics
-
-- **Error Tracking**: Monitor application errors
-- **Performance Metrics**: Track loading times
-- **Usage Analytics**: Monitor feature usage
-- **API Monitoring**: Track OpenAI API usage
+This project is licensed under the MIT License.
 
 ## 🤝 Contributing
 
@@ -236,20 +225,13 @@ cd frontend && npm run dev
 4. Test thoroughly
 5. Submit a pull request
 
-## 📄 License
-
-This project is licensed under the MIT License.
-
-## 🆘 Support
+## 📞 Support
 
 For support and questions:
-1. Check the troubleshooting section
-2. Review the deployment guide
-3. Check browser console for errors
-4. Verify environment variables
+- Check the troubleshooting section
+- Review API documentation
+- Open an issue on GitHub
 
-## 🔗 Links
+---
 
-- **Website**: https://seashell-seahorse-396931.hostingersite.com
-- **Backend API**: https://your-backend-app.onrender.com
-- **Documentation**: See `DEPLOYMENT.md` for detailed instructions 
+**Note**: This is a comprehensive AI content creation platform with professional video editing capabilities. The video editor provides a CapCut-like experience with advanced features for content creators. 

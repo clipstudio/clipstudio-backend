@@ -8,5 +8,5 @@
 
 <IfModule mod_headers.c>
   Header set X-Powered-By "Hostinger Horizons"
-  Header set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://clipstudio-backend.onrender.com; connect-src 'self' https://clipstudio-backend.onrender.com; img-src 'self' data: https:; style-src 'self' 'unsafe-inline'; font-src 'self' data:;"
+  Header set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://clipstudio-backend-1.onrender.com; connect-src 'self' https://clipstudio-backend-1.onrender.com; img-src 'self' data: https:; style-src 'self' 'unsafe-inline'; font-src 'self' data:;"
 </IfModule>
